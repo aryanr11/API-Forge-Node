@@ -4,8 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 var tempidsRouter = require("./utilities/tempid.route");
@@ -24,6 +23,7 @@ var foodsRouter = require("./modules/food/food.router");
 var mailIdsRouter = require("./modules/mailIdsaver/MailIdsaver.router");
 var hotelsRouter = require("./modules/hotel/hotel.router");
 var sportsRouter = require("./modules/sports/sports.router");
+var contackbooksRouter = require("./modules/contackbook/contackbook.router");
 
 const mongoose = require("mongoose");
 var cors = require("cors");
@@ -48,23 +48,23 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/tempid", tempidsRouter);
-app.use("/movie", moviesRouter);
 app.use("/blog", blogRouter);
-app.use("/tempid", tempidsRouter);
+app.use("/contackbook", contackbooksRouter);
+app.use("/food", foodsRouter);
+app.use("/gst", gstRouter);
+app.use("/hospital", hospitalRouter);
+app.use("/hotel", hotelsRouter);
+app.use("/insurance", insuranceRouter);
+app.use("/mailid", mailIdsRouter);
+app.use("/mobile", mobileRouter);
+app.use("/movie", moviesRouter);
 app.use("/note", noteRouter);
 app.use("/passwordsaver", passwordsaversRouter);
 app.use("/payment", paymentsRouter);
-app.use("/mobile", mobileRouter);
-app.use("/gst", gstRouter);
-app.use("/hospital", hospitalRouter);
-app.use("/insurance", insuranceRouter);
 app.use("/playlist", playlistRouter);
-app.use("/food", foodsRouter);
-app.use("/mailId", mailIdsRouter);
-app.use("/hotel", hotelsRouter);
 app.use("/sports", sportsRouter);
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler 
 app.use(function (req, res, next) {
   next(createError(404));
 });

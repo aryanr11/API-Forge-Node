@@ -31,6 +31,8 @@ exports.getParticularData = async function (req, res, next) {
       })),
     };
 
+    
+
     let Data = await BLOG.find(query);
 
     res.status(201).json({
